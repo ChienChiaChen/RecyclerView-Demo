@@ -2,8 +2,12 @@ package chiachen.example.com.recyclerview_demo;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +23,25 @@ public class MainActivity extends AppCompatActivity{
 		RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
 		RecyclerViewAdapter adapter = new RecyclerViewAdapter(data, getApplication());
 		recyclerView.setAdapter(adapter);
+		// recyclerView.setLayoutManager(new GridLayoutManager(this,3));
 		recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+		RecyclerView.ItemAnimator itemAnimator = new DefaultItemAnimator();
+		itemAnimator.setAddDuration(1000);
+		itemAnimator.setRemoveDuration(1000);
+		recyclerView.setItemAnimator(itemAnimator);
+		recyclerView.addOnItemTouchListener( new CustomRVItemTouchListener( this, recyclerView, new RecyclerViewItemClickListener(){
+			@Override
+			public void onClick(View view, int position){
+				Toast.makeText( view.getContext(), "onClick " + position, Toast.LENGTH_SHORT ).show();
+			}
+
+			@Override
+			public void onLongClick(View view, int position){
+				Toast.makeText( view.getContext(), "onLongClick " + position, Toast.LENGTH_SHORT ).show();
+			}
+		} ) );
+
 	}
 
 	public List<Data> fill_with_data() {
