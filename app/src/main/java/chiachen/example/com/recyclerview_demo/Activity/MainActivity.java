@@ -1,16 +1,24 @@
-package chiachen.example.com.recyclerview_demo;
+package chiachen.example.com.recyclerview_demo.Activity;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import chiachen.example.com.recyclerview_demo.Adapter.RecyclerViewAdapter;
+import chiachen.example.com.recyclerview_demo.Listener.CustomRVItemTouchListener;
+import chiachen.example.com.recyclerview_demo.Data.Data;
+import chiachen.example.com.recyclerview_demo.R;
+import chiachen.example.com.recyclerview_demo.Listener.RecyclerViewItemClickListener;
 
 public class MainActivity extends AppCompatActivity{
 
@@ -44,7 +52,22 @@ public class MainActivity extends AppCompatActivity{
 
 	}
 
-	public List<Data> fill_with_data() {
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		menu.add(Menu.NONE, Menu.FIRST + 1, Menu.NONE, "GridView");
+		return super.onCreateOptionsMenu(menu);
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		if (Menu.NONE == item.getGroupId()) {
+			Intent intent = new Intent(MainActivity.this, GridActivity.class);
+			startActivity(intent);
+		}
+		return super.onOptionsItemSelected(item);
+	}
+
+	public static List<Data> fill_with_data() {
 
 		List<Data> data = new ArrayList<>();
 

@@ -1,4 +1,4 @@
-package chiachen.example.com.recyclerview_demo;
+package chiachen.example.com.recyclerview_demo.Adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -10,6 +10,11 @@ import android.view.animation.AnimationUtils;
 
 import java.util.Collections;
 import java.util.List;
+
+import chiachen.example.com.recyclerview_demo.Data.Data;
+import chiachen.example.com.recyclerview_demo.R;
+import chiachen.example.com.recyclerview_demo.ViewHolder.ViewHolder;
+
 
 /**
  * Created by Jason_Chien on 2017/3/1.

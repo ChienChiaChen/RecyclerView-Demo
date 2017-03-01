@@ -1,4 +1,4 @@
-package chiachen.example.com.recyclerview_demo;
+package chiachen.example.com.recyclerview_demo.Listener;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
